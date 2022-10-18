@@ -90,12 +90,12 @@
     <img src="img/menu-icon/4.svg" alt="">
     </div>
     <div class="nav_title">
-    <span>Admins</span>
+    <span>Users</span>
     </div>
     </a>
     <ul>
-    <li><a href="admin_list.php">Admin List</a></li>
-    <li><a href="add_new_admin.php">Add New Admin</a></li>
+    <li><a href="user_list.php">Users List</a></li>
+    <li><a href="add_new_user.php">Add New User</a></li>
     </ul>
     </li>
     <li class="">
@@ -119,12 +119,12 @@
     <img src="img/menu-icon/5.svg" alt="">
     </div>
     <div class="nav_title">
-    <span>Users</span>
+    <span>Customers</span>
     </div>
     </a>
     <ul>
-    <li><a href="user_list.php">Users List</a></li>
-    <li><a href="add_new_user.php">Add New User</a></li>
+    <li><a href="customer_list.php">Customers List</a></li>
+    
     </ul>
     </li>
     

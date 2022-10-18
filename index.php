@@ -1,3 +1,11 @@
+<?php
+    include('config.php');
+    // require('auth-session.php');
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -165,7 +173,7 @@
 <div class="profile_info_details">
 <a href="#">My Profile </a>
 <a href="#">Settings</a>
-<a href="#">Log Out </a>
+<a href="logout.php">Log Out </a>
 </div>
 </div>
 </div>

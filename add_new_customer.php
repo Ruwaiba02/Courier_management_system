@@ -202,7 +202,7 @@ August 1, 2020 - August 31, 2020
 <div class="white_card_header">
 <div class="box_header m-0">
 <div class="main-title">
-<h3 class="m-0">Add New Admin </h3>
+<h3 class="m-0">Add New User </h3>
 </div>
 </div>
 </div>
@@ -252,7 +252,7 @@ August 1, 2020 - August 31, 2020
 </div>
 <div class="col-12">
 <div class="create_report_btn mt_30">
-<a href="#" class="btn_1 radius_btn d-block text-center">Add Admin</a>
+<a href="#" class="btn_1 radius_btn d-block text-center">Add User</a>
 </div>
 </div>
 </div>

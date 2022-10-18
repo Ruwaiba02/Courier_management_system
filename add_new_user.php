@@ -174,108 +174,9 @@
 </div>
 </div>
 
-<div class="main_content_iner overly_inner ">
-<div class="container-fluid p-0 ">
 
-<div class="row">
-<div class="col-12">
-<div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
-<div class="page_title_left d-flex align-items-center">
-<h3 class="f_s_25 f_w_700 dark_text mr_30">Dashboard</h3>
-<ol class="breadcrumb page_bradcam mb-0">
-<li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-<li class="breadcrumb-item active">Analytic</li>
-</ol>
-</div>
-<div class="page_title_right">
-<div class="page_date_button d-flex align-items-center">
-<img src="img/icon/calender_icon.svg" alt="">
-August 1, 2020 - August 31, 2020
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-12">
-<div class="white_card card_height_100 mb_30">
-<div class="white_card_header">
-<div class="box_header m-0">
-<div class="main-title">
-<h3 class="m-0">Add New User </h3>
-</div>
-</div>
-</div>
-<div class="white_card_body">
-<div class="row">
-<div class="col-lg-6">
-<div class="common_input mb_15">
-<input type="text" placeholder="Username">
-</div>
-</div>
-<div class="col-lg-6">
-<div class="common_input mb_15">
-<input type="text" placeholder="First Name">
-</div>
-</div>
-<div class="col-lg-6">
-<div class="common_input mb_15">
-<input type="text" placeholder="Last Name">
-</div>
-</div>
-<div class="col-lg-6">
-<div class="common_input mb_15">
-<input type="text" placeholder="Email Address">
-</div>
-</div>
-<div class="col-lg-6">
-<div class="common_input mb_15">
-<input type="text" placeholder="Mobile No">
-</div>
-</div>
-<div class="col-lg-6">
-<div class="common_input mb_15">
-<input type="text" placeholder="Password">
-</div>
-</div>
-<div class="col-lg-6">
-<div class="common_input mb_15">
-<input type="text" placeholder="Email">
-</div>
-</div>
-<div class="col-lg-6">
-<select class="nice_Select2 nice_Select_line wide" style="display: none;">
-<option value="1">Select Role</option>
-<option value="1">Role 1</option>
-<option value="1">Role2</option>
-</select>
-</div>
-<div class="col-12">
-<div class="create_report_btn mt_30">
-<a href="#" class="btn_1 radius_btn d-block text-center">Add User</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 
-<div class="footer_part">
-<div class="container-fluid">
-<div class="row">
-<div class="col-lg-12">
-<div class="footer_iner text-center">
-<p>2020 © Influence - Designed by <a href="#"> <i class="ti-heart"></i> </a><a href="#"> Dashboard</a></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
+<!--------------------------------chat area ------------------------------->
 
 <div class="CHAT_MESSAGE_POPUPBOX">
 <div class="CHAT_POPUP_HEADER">
@@ -387,6 +288,189 @@ How can I help you?</P>
 <i class="ti-angle-up"></i>
 </a>
 </div>
+
+
+<!------------------------------- Chat Area end ---------------------------------->
+
+
+
+<div class="main_content_iner overly_inner ">
+<div class="container-fluid p-0 ">
+
+<div class="row">
+<div class="col-12">
+<div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+<div class="page_title_left d-flex align-items-center">
+<h3 class="f_s_25 f_w_700 dark_text mr_30">Dashboard</h3>
+<ol class="breadcrumb page_bradcam mb-0">
+<li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+<li class="breadcrumb-item active">Analytic</li>
+</ol>
+</div>
+<div class="page_title_right">
+<div class="page_date_button d-flex align-items-center">
+<img src="img/icon/calender_icon.svg" alt="">
+August 1, 2020 - August 31, 2020
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!---------------------------- Form Start ---------------------------------->
+
+
+<?php 
+
+include "config.php";
+$query = "SELECT * FROM `branches`";
+
+$result = mysqli_query($conn, $query);
+
+
+if (isset($_POST["add"])) {
+    $user_fname = $_POST["fname"];
+    $user_lname = $_POST["lname"];
+    $user_name = $_POST["username"];
+    $user_email = $_POST["email"];
+    $user_number = $_POST["number"];
+    $user_address = $_POST["address"];
+    $user_password = $_POST["password"];
+    $user_role = $_POST["role"];
+    $user_branch = $_POST["branch"];
+
+   
+    $query2 = "SELECT * FROM `users` WHERE username = '{$user_name}'";
+
+    $result2  = mysqli_query($conn, $query2);
+    
+
+    if (mysqli_num_rows($result2) > 0) {
+        echo "user already exist";
+    } else {
+        $query3 = "INSERT INTO `users`(`first_name`, `last_name`, `username`, `phone`, `email`, `Address`, `password`, `role`,`branch`)
+         VALUES ('$user_fname','$user_lname','$user_name','$user_number','$user_email','$user_address','$user_password','$user_role','$user_branch')";
+
+        $result3 = mysqli_query($conn, $query3);
+
+        
+    }
+}
+?>
+
+
+
+
+<div class="row">
+<div class="col-12">
+<div class="white_card card_height_100 mb_30">
+<div class="white_card_header">
+<div class="box_header m-0">
+<div class="main-title">
+<h3 class="m-0">Add New User</h3>
+</div>
+</div>
+</div>
+
+<form action="<?php $_SERVER["PHP_SELF"] ?>" method="POST">
+<div class="white_card_body">
+<div class="row">
+<div class="col-lg-6">
+<div class="common_input mb_15">
+<input type="text" placeholder="Username" name="username">
+</div>
+</div>
+<div class="col-lg-6">
+<div class="common_input mb_15">
+<input type="text" placeholder="First Name" name="fname">
+</div>
+</div>
+<div class="col-lg-6">
+<div class="common_input mb_15">
+<input type="text" placeholder="Last Name" name="lname"> 
+</div>
+</div>
+<div class="col-lg-6">
+<div class="common_input mb_15">
+<input type="text" placeholder="Email Address" name="email">
+</div>
+</div>
+<div class="col-lg-6">
+<div class="common_input mb_15">
+<input type="text" placeholder="Mobile No" name="number">
+</div>
+</div>
+<div class="col-lg-6">
+<div class="common_input mb_15">
+<input type="password" placeholder="Password" name="password">
+</div>
+</div>
+<div class="col-lg-6">
+<div class="common_input mb_15">
+<input type="text" placeholder="Address" name="address">
+</div>
+</div>
+<div class="col-lg-6">
+<select name="role" style="height:47px;line-height:47px;background-color:transparent;border:0;padding:10px 25px;color:#81879f;font-weight:400;font-size:14px;width:100%;display:block;border-radius:10px;border:1px solid #e5ecff">
+<option>Select Role</option>
+<option value="0">Agent</option>
+<option value="1">Admin</option>
+</select>
+</div>
+<div class="col-lg-6">
+<select name="branch" style="height:47px;line-height:47px;background-color:transparent;border:0;padding:10px 25px;color:#81879f;font-weight:400;font-size:14px;width:100%;display:block;border-radius:10px;border:1px solid #e5ecff">>
+        <?php
+            while($row=mysqli_fetch_assoc($result))
+            {
+        ?>
+        <option value="<?php echo $row['branch_id'];?>"><?php echo $row['branch_name'];?></option>
+        <?php
+            }
+        ?>
+    </select>
+</div>
+<div class="col-12">
+<div class="create_report_btn mt_30">
+<input type="submit" class="btn_1 radius_btn d-block text-center" value="Add Admin" name="add">
+</div>
+</div>
+</div>
+</div>
+
+</form>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<!---------------------------------- Form end ------------------------------------>
+
+
+<!---------------------------------footer start ------------------------>
+
+<div class="footer_part">
+<div class="container-fluid">
+<div class="row">
+<div class="col-lg-12">
+<div class="footer_iner text-center">
+<p>2020 © Influence - Designed by <a href="#"> <i class="ti-heart"></i> </a><a href="#"> Dashboard</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!--------------------------------footer end ------------------------------>
+
+
+
+
 
 <script src="js/jquery1-3.4.1.min.js"></script>
 

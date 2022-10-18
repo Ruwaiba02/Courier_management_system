@@ -45,6 +45,7 @@
 
 <?php
     require('side_bar.php');
+    include('config.php');
 ?>
 
 <section class="main_content dashboard_part large_header_bg">
@@ -219,120 +220,84 @@ August 1, 2020 - August 31, 2020
 </div>
 </div>
 </div>
+
+
+<?php
+
+    $query = "SELECT * FROM `users`";
+
+    $result = mysqli_query($conn,$query);
+
+    if(!$result)
+    {
+        echo "<script>alert('Error : ".mysqli_error($conn)."');</script>";
+    }
+
+?>
+
+
+
+
 <div class="QA_table mb_30">
 
 <table class="table lms_table_active ">
 <thead>
 <tr>
 <th scope="col">id</th>
-<th scope="col">User</th>
 <th scope="col">Username</th>
+<th scope="col">First name</th>
+<th scope="col">Last name</th>
 <th scope="col">Email Address</th>
 <th scope="col">Role</th>
 <th scope="col">Status</th>
 <th scope="col">Action</th>
 </tr>
 </thead>
+
+<?php
+     while($row=mysqli_fetch_assoc($result))
+     {
+       ?>
+
+
+
 <tbody>
 <tr>
-<th scope="row"> <a href="#" class="question_content"> 1 </a></th>
-<td>Hayden</td>
-<td>Hayden</td>
-<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="394e564b520d0900795e54585055175a5654">[email&#160;protected]</a></td>
-<td><a href="#">Admin</a></td>
-<td><a href="#" class="status_btn">Active</a></td>
+      <td><?php echo $row['user_id'];?></td>
+      <td><?php echo $row['first_name'];?></td>
+      <td><?php echo $row['last_name'];?></td>
+      <td><?php echo $row['username'];?></td>
+      <td><?php echo $row['email'];?></td>
+      
+      <td>
+          <?php
+            if($row["role"]=="1")
+            {
+              echo "Admin";
+            } 
+            else{
+              echo " Agent";
+            }
+            
+            ?>
+                    
+                    
+                    </td>
+   <td><a href="#" class="status_btn">Active</a></td>
+
 <td>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</td>
+    <a href="update-user.php?id=<?php echo $row['user_id'];?>" class="action_btn mr_10"><i class='far fa-edit'></i></a>
+        </td>
+    <td>
+    <a href="delete-user.php?id=<?php echo $row['user_id']?>" class="action_btn"><i class='fas fa-trash'></i></a>
+    </td>
+
 </tr>
-<tr>
-<th scope="row"> <a href="#" class="question_content"> 1 </a></th>
-<td>Hayden</td>
-<td>Hayden</td>
-<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e2958d9089d6d2dba2858f838b8ecc818d8f">[email&#160;protected]</a></td>
-<td><a href="#">Admin</a></td>
-<td><a href="#" class="status_btn">Active</a></td>
-<td>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</td>
-</tr>
-<tr>
-<th scope="row"> <a href="#" class="question_content"> 1 </a></th>
-<td>Hayden</td>
-<td>Hayden</td>
-<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8dfae2ffe6b9bdb4cdeae0ece4e1a3eee2e0">[email&#160;protected]</a></td>
-<td><a href="#">Admin</a></td>
-<td><a href="#" class="status_btn">Active</a></td>
-<td>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</td>
-</tr>
-<tr>
-<th scope="row"> <a href="#" class="question_content"> 1 </a></th>
-<td>Hayden</td>
-<td>Hayden</td>
-<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4b3c2439207f7b720b2c262a222765282426">[email&#160;protected]</a></td>
-<td><a href="#">Admin</a></td>
-<td><a href="#" class="status_btn">Active</a></td>
-<td>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</td>
-</tr>
-<tr>
-<th scope="row"> <a href="#" class="question_content"> 1 </a></th>
-<td>Hayden</td>
-<td>Hayden</td>
-<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="01766e736a35313841666c60686d2f626e6c">[email&#160;protected]</a></td>
-<td><a href="#">Admin</a></td>
-<td><a href="#" class="status_btn">Active</a></td>
-<td>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</td>
-</tr>
-<tr>
-<th scope="row"> <a href="#" class="question_content"> 1 </a></th>
-<td>Hayden</td>
-<td>Hayden</td>
-<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7b0c1409104f4b423b1c161a121755181416">[email&#160;protected]</a></td>
-<td><a href="#">Admin</a></td>
-<td><a href="#" class="status_btn">Active</a></td>
-<td>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</td>
-</tr>
-<tr>
-<th scope="row"> <a href="#" class="question_content"> 1 </a></th>
-<td>Hayden</td>
-<td>Hayden</td>
-<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="364159445d02060f76515b575f5a1855595b">[email&#160;protected]</a></td>
-<td><a href="#">Admin</a></td>
-<td><a href="#" class="status_btn">Active</a></td>
-<td>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</td>
-</tr>
+
 </tbody>
+
+<?php } ?>
+
 </table>
 </div>
 </div>
@@ -510,3 +475,24 @@ How can I help you?</P>
 <script src="js/custom.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
