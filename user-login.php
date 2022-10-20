@@ -1,13 +1,12 @@
 <?php
 session_start();
-require('auth-session.php');
 include('config.php');
 
-// if(isset($_SESSION["username"]))
-// {
-//     header("location: index.php");
+if(isset($_SESSION["username"]))
+{
+    header("location: index.php");
 
-// }
+}
 
 
 
@@ -58,7 +57,7 @@ include('config.php');
         <div class="">
         <input type="password" class="form-control" placeholder="Password" name="password">
         </div>
-        <input type="submit" class="btn_1 full_width text-center" value="Login" name="login">
+        <input type="submit" style="background-color: #884ffbe6 ; color:white; padding-top:0px;" class="btn_1 full_width text-center" value="Login" name="login">
         
         
         </form>
@@ -92,7 +91,7 @@ include('config.php');
 
                                 $_SESSION["username"] = $row["username"];
                                 $_SESSION["user_id"] = $row["user_id"];
-                                $_SESSION["user_role"] = $row["role"];
+                                $_SESSION["role"] = $row["role"];
 
                                 header("location: index.php");
                             }
