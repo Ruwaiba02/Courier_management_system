@@ -335,7 +335,6 @@ if (isset($_POST["add"])) {
     $user_name = $_POST["username"];
     $user_email = $_POST["email"];
     $user_number = $_POST["number"];
-    $user_address = $_POST["address"];
     $user_password = $_POST["password"];
     $user_role = $_POST["role"];
     $user_branch = $_POST["branch"];
@@ -349,8 +348,8 @@ if (isset($_POST["add"])) {
     if (mysqli_num_rows($result2) > 0) {
         echo "user already exist";
     } else {
-        $query3 = "INSERT INTO `users`(`first_name`, `last_name`, `username`, `phone`, `email`, `Address`, `password`, `role`,`branch`)
-         VALUES ('$user_fname','$user_lname','$user_name','$user_number','$user_email','$user_address','$user_password','$user_role','$user_branch')";
+        $query3 = "INSERT INTO `users`(`first_name`, `last_name`, `username`, `phone`, `email`, `password`, `role`,`branch`)
+         VALUES ('$user_fname','$user_lname','$user_name','$user_number','$user_email','$user_password','$user_role','$user_branch')";
 
         $result3 = mysqli_query($conn, $query3);
 
@@ -407,11 +406,6 @@ if (isset($_POST["add"])) {
 </div>
 </div>
 <div class="col-lg-6">
-<div class="common_input mb_15">
-<input type="text" placeholder="Address" name="address">
-</div>
-</div>
-<div class="col-lg-6">
 <select name="role" style="height:47px;line-height:47px;background-color:transparent;border:0;padding:10px 25px;color:#81879f;font-weight:400;font-size:14px;width:100%;display:block;border-radius:10px;border:1px solid #e5ecff">
 <option>Select Role</option>
 <option value="0">Agent</option>
@@ -420,6 +414,7 @@ if (isset($_POST["add"])) {
 </div>
 <div class="col-lg-6">
 <select name="branch" style="height:47px;line-height:47px;background-color:transparent;border:0;padding:10px 25px;color:#81879f;font-weight:400;font-size:14px;width:100%;display:block;border-radius:10px;border:1px solid #e5ecff">>
+<option>Select Branch</option>
         <?php
             while($row=mysqli_fetch_assoc($result))
             {

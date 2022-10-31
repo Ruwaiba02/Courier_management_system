@@ -1,3 +1,7 @@
+<?php 
+    ob_start();
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -42,9 +46,13 @@
 </head>
 <body class="crm_body_bg">
 
+
+
 <?php
     require('side_bar.php');
 ?>
+
+
 
 
 <section class="main_content dashboard_part large_header_bg">
@@ -55,7 +63,7 @@
 <div class="header_iner d-flex justify-content-between align-items-center">
 <div class="sidebar_icon d-lg-none">
 <i class="ti-menu"></i>
-</div>
+ </div>
 <div class="line_icon open_miniSide d-none d-lg-block">
 <img src="img/line_img.png" alt="">
 </div>
@@ -114,7 +122,7 @@
 
 <div class="single_notify d-flex align-items-center">
 <div class="notify_thumb">
-<a href="#"><img src="img/staf/2.png" alt=""></a> 
+<a href="#"><img src="img/staf/2.png" alt=""></a>
 </div>
 <div class="notify_content">
 <a href="#"><h5>Cool Marketing </h5></a>
@@ -174,139 +182,9 @@
 </div>
 </div>
 
-<div class="main_content_iner overly_inner ">
-<div class="container-fluid p-0 ">
-
-<div class="row">
-<div class="col-12">
-<div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
-<div class="page_title_left d-flex align-items-center">
-<h3 class="f_s_25 f_w_700 dark_text mr_30">Dashboard</h3>
-<ol class="breadcrumb page_bradcam mb-0">
-<li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-<li class="breadcrumb-item active">Analytic</li>
- </ol>
-</div>
-<div class="page_title_right">
-<div class="page_date_button d-flex align-items-center">
-<img src="img/icon/calender_icon.svg" alt="">
-August 1, 2020 - August 31, 2020
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-lg-12">
-<div class="white_card card_height_100 mb_30 pt-4">
-<div class="white_card_body">
-<div class="QA_section">
-<div class="white_box_tittle list_header">
-<h4>Admin List </h4>
-<div class="box_right d-flex lms_block">
-<div class="serach_field_2">
-<div class="search_inner">
-<form Active="#">
-<div class="search_field">
-<input type="text" placeholder="Search content here...">
-</div>
-<button type="submit"> <i class="ti-search"></i> </button>
-</form>
-</div>
-</div>
-<div class="add_button ms-2">
-<a href="#" data-toggle="modal" data-target="#addcategory" class="btn_1">search</a>
-</div>
-</div>
-</div>
-
-<?php
-
-    include('config.php');
-
-    $query = "SELECT * FROM `customer_login`";
-
-    $result = mysqli_query($conn,$query);
-
-    if(!$result)
-    {
-        echo "<script>alert('Error : ".mysqli_error($conn)."');</script>";
-    }
-
-?>
 
 
-
-
-<div class="QA_table mb_30">
-
-<table class="table lms_table_active ">
-<thead>
-<tr>
-<th scope="col">Customer ID</th>
-<th scope="col">Username</th>
-<th scope="col">Email</th>
-<th scope="col">Password</th>
-<th scope="col">Phone</th>
-<th scope="col">Action</th>
-</tr>
-</thead>
-
-<?php
-     while($row=mysqli_fetch_assoc($result))
-     {
-       ?>
-
-
-
-<tbody>
-<tr>
-      <td><?php echo $row['cust_id'];?></td>
-      <td><?php echo $row['username'];?></td>
-      <td><?php echo $row['email'];?></td>
-      <td><?php echo $row['password'];?></td>
-      <td><?php echo $row['phone'];?></td>
-     
-
-<td>
-    <a href="update-customer.php?id=<?php echo $row['cust_id'];?>" class="action_btn mr_10"><i class='far fa-edit'></i></a>
-       
-   
-    <a href="delete-customer.php?id=<?php echo $row['cust_id']?>" class="action_btn"><i class='fas fa-trash'></i></a>
-    </td>
-
-</tr>
-
-</tbody>
-
-<?php } ?>
-
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
-
-
-<div class="footer_part">
-<div class="container-fluid">
-<div class="row">
-<div class="col-lg-12">
-<div class="footer_iner text-center">
-<p>2020 © Influence - Designed by <a href="#"> <i class="ti-heart"></i> </a><a href="#"> Dashboard</a></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
+<!--------------------------------chat area ------------------------------->
 
 <div class="CHAT_MESSAGE_POPUPBOX">
 <div class="CHAT_POPUP_HEADER">
@@ -393,7 +271,7 @@ How can I help you?</P>
 <input type="text" class="form-control" placeholder="Write your message" aria-label="Recipient's username" aria-describedby="basic-addon2">
 <div class="input-group-append">
 <button class="btn " type="button">
-
+ 
 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M18.7821 3.21895C14.4908 -1.07281 7.50882 -1.07281 3.2183 3.21792C-1.07304 7.50864 -1.07263 14.4908 3.21872 18.7824C7.50882 23.0729 14.4908 23.0729 18.7817 18.7815C23.0726 14.4908 23.0724 7.50906 18.7821 3.21895ZM17.5813 17.5815C13.9525 21.2103 8.04773 21.2108 4.41871 17.5819C0.78907 13.9525 0.789485 8.04714 4.41871 4.41832C8.04752 0.789719 13.9521 0.789304 17.5817 4.41874C21.2105 8.04755 21.2101 13.9529 17.5813 17.5815ZM6.89503 8.02162C6.89503 7.31138 7.47107 6.73534 8.18131 6.73534C8.89135 6.73534 9.46739 7.31117 9.46739 8.02162C9.46739 8.73228 8.89135 9.30811 8.18131 9.30811C7.47107 9.30811 6.89503 8.73228 6.89503 8.02162ZM12.7274 8.02162C12.7274 7.31138 13.3038 6.73534 14.0141 6.73534C14.7241 6.73534 15.3002 7.31117 15.3002 8.02162C15.3002 8.73228 14.7243 9.30811 14.0141 9.30811C13.3038 9.30811 12.7274 8.73228 12.7274 8.02162ZM15.7683 13.2898C14.9712 15.1332 13.1043 16.3243 11.0126 16.3243C8.8758 16.3243 6.99792 15.1272 6.22834 13.2744C6.09642 12.9573 6.24681 12.593 6.56438 12.4611C6.64238 12.4289 6.72328 12.4136 6.80293 12.4136C7.04687 12.4136 7.27836 12.5577 7.37772 12.7973C7.95376 14.1842 9.38048 15.0799 11.0126 15.0799C12.6077 15.0799 14.0261 14.1836 14.626 12.7959C14.7625 12.4804 15.1288 12.335 15.4441 12.4717C15.7594 12.6084 15.9048 12.9745 15.7683 13.2898Z" fill="#707DB7" />
 </svg>
@@ -419,45 +297,89 @@ How can I help you?</P>
 </a>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery1-3.4.1.min.js"></script>
+<?php
+        include('config.php');
 
-<script src="js/popper1.min.js"></script>
+        $id = $_GET['id'];
+        
+        $query = "SELECT * FROM `customer_login` WHERE `cust_id` = '$id'";
 
-<script src="js/bootstrap1.min.js"></script>
+        $result = mysqli_query($conn , $query);
 
-<script src="js/metisMenu.js"></script>
+        $row = mysqli_fetch_row($result);
 
-<script src="vendors/count_up/jquery.waypoints.min.js"></script>
 
-<script src="vendors/chartlist/Chart.min.js"></script>
+        if(isset($_POST['update']))
+        {
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $phone = $_POST['phone'];
+           
 
-<script src="vendors/count_up/jquery.counterup.min.js"></script>
+            $query2 = "UPDATE `customer_login` SET `username`='$username',`email`='$email',`password`='$password',`phone`='$phone' WHERE  `cust_id` = '$id' ";
+            $result2 = mysqli_query($conn,$query2);
 
-<script src="vendors/niceselect/js/jquery.nice-select.min.js"></script>
+            if($result2)
+            {
+                header('location:customer_list.php');
+            }
+            else{
+                echo "<script>alert('Error : ".mysqli_error($conn)."');</script>";
+            }
+        }
 
-<script src="vendors/owl_carousel/js/owl.carousel.min.js"></script>
+    ?>
 
-<script src="vendors/datatable/js/jquery.dataTables.min.js"></script>
-<script src="vendors/datatable/js/dataTables.responsive.min.js"></script>
-<script src="vendors/datatable/js/dataTables.buttons.min.js"></script>
-<script src="vendors/datatable/js/buttons.flash.min.js"></script>
-<script src="vendors/datatable/js/jszip.min.js"></script>
-<script src="vendors/datatable/js/pdfmake.min.js"></script>
-<script src="vendors/datatable/js/vfs_fonts.js"></script>
-<script src="vendors/datatable/js/buttons.php5.min.js"></script>
-<script src="vendors/datatable/js/buttons.print.min.js"></script>
+<div class="row">
+<div class="col-12">
+<div class="white_card card_height_100 mb_30">
+<div class="white_card_header">
+<div class="box_header m-0">
+<div class="main-title">
+<h3 class="m-0">Update User</h3>
+</div>
+</div>
+</div>
 
-<script src="vendors/datepicker/datepicker.js"></script>
-<script src="vendors/datepicker/datepicker.en.js"></script>
-<script src="vendors/datepicker/datepicker.custom.js"></script>
-<script src="js/chart.min.js"></script>
-<script src="vendors/chartjs/roundedBar.min.js"></script>
+<form action="<?php $_SERVER["PHP_SELF"] ?>" method="POST">
+<div class="white_card_body">
+<div class="row">
+<div class="col-lg-6">
+<div class="common_input mb_15">
+<input type="text" placeholder="Username" name="username" value="<?php echo $row[1];?>">
+</div>
+</div>
+<div class="col-lg-6">
+<div class="common_input mb_15">
+<input type="text" placeholder="Email Address" name="email" value="<?php echo $row[2];?>">
+</div>
+</div>
+<div class="col-lg-6">
+<div class="common_input mb_15">
+<input type="text" placeholder="Mobile No" name="phone" value="<?php echo $row[4];?>">
+</div>
+</div>
+<div class="col-lg-6">
+<div class="common_input mb_15">
+<input type="password" placeholder="Password" name="password" value="<?php echo $row[3];?>">
+</div>
+</div>
 
-<script src="vendors/progressbar/jquery.barfiller.js"></script>
 
-<script src="vendors/tagsinput/tagsinput.js"></script>
+<div class="col-12">
+<div class="create_report_btn mt_30">
+<input type="submit" class="btn_1 radius_btn d-block text-center" value="Update User" name="update">
+</div>
+</div>
+</div>
+</div>
 
-<script src="vendors/text_editor/summernote-bs4.js"></script>
-<script src="js/custom.js"></script>
-</body>
-</html>
+</form>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+

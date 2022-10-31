@@ -216,7 +216,7 @@ August 1, 2020 - August 31, 2020
 </div>
 </div>
 <div class="add_button ms-2">
-<a href="#" data-toggle="modal" data-target="#addcategory" class="btn_1">search</a>
+<a href="search_user.php" data-toggle="modal" data-target="#addcategory" class="btn_1">search</a>
 </div>
 </div>
 </div>
@@ -287,8 +287,8 @@ August 1, 2020 - August 31, 2020
 
 <td>
     <a href="update-user.php?id=<?php echo $row['user_id'];?>" class="action_btn mr_10"><i class='far fa-edit'></i></a>
-        </td>
-    <td>
+       
+   
     <a href="delete-user.php?id=<?php echo $row['user_id']?>" class="action_btn"><i class='fas fa-trash'></i></a>
     </td>
 
