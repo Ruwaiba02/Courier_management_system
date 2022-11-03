@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2022 at 06:26 PM
+-- Generation Time: Nov 02, 2022 at 03:29 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -122,7 +122,9 @@ INSERT INTO `customer_login` (`cust_id`, `username`, `email`, `password`, `phone
 
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
+  `o_userid` int(11) DEFAULT NULL,
   `cust_id` int(11) DEFAULT NULL,
+  `o_branchid` int(11) DEFAULT NULL,
   `s_name` varchar(255) DEFAULT NULL,
   `s_email` varchar(255) DEFAULT NULL,
   `s_address` varchar(255) DEFAULT NULL,
@@ -135,8 +137,26 @@ CREATE TABLE `orders` (
   `r_city` varchar(255) DEFAULT NULL,
   `weight` int(11) DEFAULT NULL,
   `courier_type` varchar(255) NOT NULL,
-  `order_date` timestamp NOT NULL DEFAULT current_timestamp()
+  `order_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `delivery_date` date DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL,
+  `tax` int(11) DEFAULT NULL,
+  `price_before_tax` int(11) DEFAULT NULL,
+  `total_price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `o_userid`, `cust_id`, `o_branchid`, `s_name`, `s_email`, `s_address`, `s_phone`, `s_city`, `r_name`, `r_email`, `r_address`, `r_phone`, `r_city`, `weight`, `courier_type`, `order_date`, `delivery_date`, `status`, `tax`, `price_before_tax`, `total_price`) VALUES
+(1, 0, 0, 0, 'Muhammad Arsalan', 'arsalan@gmail.com', 'gulberg', 145252545, '', 'danish ali', 'danish@gmail.com', 'north karachi', 435635622, 'karachi', 2, 'Other', '2022-11-02 13:17:37', NULL, NULL, NULL, NULL, 0),
+(2, 0, 0, 0, 'Muhammad Arsalan', 'arsalan@gmail.com', 'gulberg', 145252545, '', 'danish ali', 'danish@gmail.com', 'north karachi', 435635622, 'karachi', 2, 'Other', '2022-11-02 13:17:55', NULL, NULL, NULL, NULL, 0),
+(7, NULL, NULL, 0, 'Muhammad Arsalan', 'arsalan@gmail.com', 'gulberg', 34567854, 'karachi', 'danish ali', 'danish@gmail.com', 'nazimabad', 46485436, 'karachi', 2, 'Other', '2022-11-02 13:26:49', NULL, NULL, NULL, NULL, 0),
+(8, NULL, NULL, 0, 'areeba khan', 'areeba@gmail.com', 'gulshan-e-iqbal', 234567898, 'karachi', 'bilal khan', 'bilal@gmail.com', 'north karachi', 45678976, 'karachi', 1, 'Document', '2022-11-02 13:29:35', NULL, NULL, NULL, NULL, 0),
+(9, NULL, NULL, 0, 'areeba khan', 'areeba@gmail.com', 'gulberg', 46456363, 'karachi', 'ali hamza', 'ali.hamza@gmail.com', 'saddar', 354645242, 'lahore', 5, 'Other', '2022-11-02 13:33:07', NULL, NULL, NULL, NULL, 0),
+(10, NULL, NULL, 0, 'ali ahmed', 'ali@gmail.com', 'gulberg', 234568686, '3', 'bilal khan', 'bilal@gmail.com', 'north karachi', 34644575, '1', 2, 'Other', '2022-11-02 14:12:26', NULL, NULL, NULL, NULL, 0),
+(15, NULL, NULL, NULL, 'areeba khan', 'areeba@gmail.com', 'buffer zone', 34567888, '10', 'babar azam', 'babar@gmail.com', 'DHA', 2147483647, '1', 3, 'Document', '2022-11-02 14:28:11', NULL, NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -231,7 +251,9 @@ ALTER TABLE `customer_login`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`),
-  ADD KEY `cust_id` (`cust_id`);
+  ADD KEY `cust_id` (`cust_id`),
+  ADD KEY `o_userid` (`o_userid`),
+  ADD KEY `o_branchid` (`o_branchid`);
 
 --
 -- Indexes for table `parcels`
@@ -266,7 +288,7 @@ ALTER TABLE `customer_login`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `parcels`
@@ -288,7 +310,9 @@ ALTER TABLE `users`
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`cust_id`) REFERENCES `customer_login` (`cust_id`);
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`cust_id`) REFERENCES `customer_login` (`cust_id`),
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`o_userid`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`o_branchid`) REFERENCES `branches` (`branch_id`);
 
 --
 -- Constraints for table `users`

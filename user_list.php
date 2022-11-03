@@ -207,17 +207,21 @@ August 1, 2020 - August 31, 2020
 <div class="box_right d-flex lms_block">
 <div class="serach_field_2">
 <div class="search_inner">
-<form Active="#">
+
+
+
+<form action="search_user.php">
 <div class="search_field">
-<input type="text" placeholder="Search content here...">
+<input type="text" name="search_term" placeholder="Search content here...">
 </div>
 <button type="submit"> <i class="ti-search"></i> </button>
-</form>
+
 </div>
 </div>
 <div class="add_button ms-2">
-<a href="search_user.php" data-toggle="modal" data-target="#addcategory" class="btn_1">search</a>
+  <input type="submit" value="Search"  data-toggle="modal" data-target="#addcategory" class="btn_1">
 </div>
+</form>
 </div>
 </div>
 
@@ -244,9 +248,9 @@ August 1, 2020 - August 31, 2020
 <thead>
 <tr>
 <th scope="col">id</th>
-<th scope="col">Username</th>
 <th scope="col">First name</th>
 <th scope="col">Last name</th>
+<th scope="col">Username</th>
 <th scope="col">Email Address</th>
 <th scope="col">Role</th>
 <th scope="col">Status</th>

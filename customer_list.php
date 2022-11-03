@@ -202,21 +202,23 @@ August 1, 2020 - August 31, 2020
 <div class="white_card_body">
 <div class="QA_section">
 <div class="white_box_tittle list_header">
-<h4>Admin List </h4>
+<h4>Customers List </h4>
 <div class="box_right d-flex lms_block">
 <div class="serach_field_2">
 <div class="search_inner">
-<form Active="#">
+
+<form action="search_customer.php">
 <div class="search_field">
-<input type="text" placeholder="Search content here...">
+<input type="text" name="search_term" placeholder="Search content here...">
 </div>
 <button type="submit"> <i class="ti-search"></i> </button>
-</form>
+
 </div>
 </div>
 <div class="add_button ms-2">
-<a href="#" data-toggle="modal" data-target="#addcategory" class="btn_1">search</a>
+<input type="submit" value="Search"  data-toggle="modal" data-target="#addcategory" class="btn_1">
 </div>
+</form>
 </div>
 </div>
 

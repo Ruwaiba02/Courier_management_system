@@ -167,6 +167,20 @@
 <img src="img/client_img.png" alt="#">
 <div class="profile_info_iner">
 <div class="profile_author_name">
+<p><?php
+
+
+
+   
+            if($_SESSION["role"]=="1")
+            {
+              echo "Admin";
+            } 
+            else{
+              echo " Agent";
+            }
+       
+            ?></p>
 <h5><?php echo $_SESSION["username"] ?></h5>
 </div>
 <div class="profile_info_details">
@@ -237,56 +251,53 @@ August 1, 2020 - August 31, 2020
 <div class="thumb">
 <img src="img/crm/businessman.svg" alt="">
 </div>
-<i class="fas fa-ellipsis-h f_s_11 white_text"></i>
+<a href="user_list.php"><i class="fas fa-ellipsis-h f_s_11 white_text"></i></a>
 </div>
 <div class="crm_body">
-<h4>2455</h4>
-<p>User Registrations</p>
-</div>
-</div>
-</div>
-<div class="col-lg-6">
-<div class="single_crm ">
-<div class="crm_head crm_bg_1 d-flex align-items-center justify-content-between">
-<div class="thumb">
-<img src="img/crm/customer.svg" alt="">
-</div>
-<i class="fas fa-ellipsis-h f_s_11 white_text"></i>
-</div>
-<div class="crm_body">
-<h4>2455</h4>
-<p>User Registrations</p>
-</div>
-</div>
-</div>
-<div class="col-lg-6">
-<div class="single_crm">
-<div class="crm_head crm_bg_2 d-flex align-items-center justify-content-between">
-<div class="thumb">
-<img src="img/crm/infographic.svg" alt="">
-</div>
-<i class="fas fa-ellipsis-h f_s_11 white_text"></i>
- </div>
-<div class="crm_body">
-<h4>2455</h4>
+
+<?php
+                $query = "SELECT * FROM `users`";
+
+                $result = mysqli_query($conn,$query);
+
+                $num_count = mysqli_num_rows($result);
+
+                ?>
+                <h3><?php echo $num_count; ?></h3>
+
+
 <p>User Registrations</p>
 </div>
 </div>
 </div>
 <div class="col-lg-6">
 <div class="single_crm">
-<div class="crm_head crm_bg_3 d-flex align-items-center justify-content-between">
+<div class="crm_head d-flex align-items-center justify-content-between">
 <div class="thumb">
-<img src="img/crm/sqr.svg" alt="">
+<img src="img/crm/businessman.svg" alt="">
 </div>
-<i class="fas fa-ellipsis-h f_s_11 white_text"></i>
+<a href="customer_list.php"><i class="fas fa-ellipsis-h f_s_11 white_text"></i></a>
 </div>
 <div class="crm_body">
-<h4>2455</h4>
-<p>User Registrations</p>
+
+<?php
+                $query2 = "SELECT * FROM `customer_login`";
+
+                $result2 = mysqli_query($conn,$query2);
+
+                $num_count2 = mysqli_num_rows($result2);
+
+                ?>
+                <h3><?php echo $num_count2; ?></h3>
+
+
+<p>Customer Registrations</p>
+
+
 </div>
 </div>
 </div>
+
 </div>
 <div class="crm_reports_bnner">
 <div class="row justify-content-end ">
